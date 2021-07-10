@@ -13,13 +13,11 @@ const ctx = canvas.getContext('2d');
 const block = new Block();
 
 function findBlockIndex(field: Block[][]) {
-  return field.map((row, index) => {
-    return row
-      .map((cell, cellIndex) => cell ? [ cellIndex, index ] : null)
+    return field
+      .map((cell, cellIndex) => cell ? [ cellIndex ] : null)
       // .filter(cell => !!cell)
       // .reduce((result, row) => ([...result, ...row]), []);
-  });
-}
+};
 
 const draw = (field: Block[][]) => {
   // console.log(field);
