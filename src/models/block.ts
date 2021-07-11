@@ -1,12 +1,19 @@
 export class Block {
-  public positionX = 0;
-  public positionY = 0;
-  public size = 30;
-
-  constructor() {}
-
-  moveDown(canvas: HTMLCanvasElement) {
-      if (this.positionY === canvas.height - this.size) return;
-      this.positionY += 30;
+  private size = 30;
+  get blockSize(): number {
+    return this.size;
   }
+
+  get positionX(): number {
+    return this.posX;
+  }
+
+  get positionY(): number {
+    return this.posY;
+  }
+
+  constructor(
+    private posX: number,
+    private posY: number
+  ) {}
 }

@@ -10,31 +10,13 @@ canvas.style.borderStyle = 'solid';
 
 const ctx = canvas.getContext('2d');
 
-const block = new Block();
-
-function findBlockIndex(field: Block[][]) {
-    return field
-      .map((cell, cellIndex) => cell ? [ cellIndex ] : null)
-      // .filter(cell => !!cell)
-      // .reduce((result, row) => ([...result, ...row]), []);
-};
-
-const draw = (field: Block[][]) => {
-  // console.log(field);
-
-  const blocksCoordinates = findBlockIndex(field);
-  console.log(blocksCoordinates);
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillRect(block.positionX, block.positionY, block.size, block.size);
-  block.moveDown(canvas);
-}
+const blocks = [new Block(0, 0), new Block(1, 1), new Block(2, 2), new Block(3, 3), new Block(4, 4), new Block(5, 5), new Block(4, 6), new Block(3, 7), new Block(2, 8), new Block(1, 9)];
 
 window.onload = () => {
-  const board = new Board();
-  const field = board.getGameField();
+  const board = new Board(ctx);
   const body = document.querySelector('body');
   body.appendChild(canvas);
   ctx.fillStyle = "#FF0000";
 
-  setInterval(draw.bind(null, field), 1000);
+  blocks.forEach(block => board.pushToStack(block));
 }
