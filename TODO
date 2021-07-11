@@ -1,3 +1,4 @@
 
 Todo:
-  ☐ Stop setInterval function
+  ✔ Rendering blocks on different parts of the game field @done(21-07-11 22:48)
+  ☐ Make blocks to move from top to bottom and detect collisions
