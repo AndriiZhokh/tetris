@@ -40,7 +40,6 @@ export class Game {
     this.stack.push(new IShape());
   }
 
-
   detectBottomCollision(): void {
     this.stack = this.stack.filter((element) => element.shapeYPosition !== 19);
   }
