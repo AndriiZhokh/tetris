@@ -1,16 +1,21 @@
 import { IShape } from './figures/i-shape';
+import { LShape } from './figures/l-shape';
+import { Shape } from './figures/shape';
+import { createRandomFigure } from '../utils/utils';
 
 export class Game {
   private timerId: NodeJS.Timeout;
 
-  public stack: IShape[] = [];
+  public stack: Shape[] = [];
 
   constructor(private ctx: CanvasRenderingContext2D) {}
 
   start(): void {
     this.pushToStack();
 
-    this.timerId = setInterval(() => this.moveDown(), 1000);
+    this.timerId = setInterval(() => {
+      this.moveDown();
+    }, 1000);
   }
 
   pause(): void {
@@ -37,10 +42,16 @@ export class Game {
   }
 
   private pushToStack(): void {
-    this.stack.push(new IShape());
+    const shape = createRandomFigure();
+    this.stack.push(shape);
   }
 
   detectBottomCollision(): void {
     this.stack = this.stack.filter((element) => element.shapeYPosition !== 19);
+
+    if (this.stack.length === 0) {
+      this.pause();
+      this.start();
+    }
   }
 }

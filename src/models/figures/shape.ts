@@ -25,19 +25,6 @@ export class Shape {
   }
 
   protected updateOptions(): void {
-    this.shapeOptions = [
-      [
-        { ...this.pos, x: this.pos.x - 1 },
-        { ...this.pos },
-        { ...this.pos, x: this.pos.x + 1 },
-        { ...this.pos, x: this.pos.x + 2 },
-      ],
-      [
-        { ...this.pos },
-        { ...this.pos, y: this.pos.y + 1 },
-        { ...this.pos, y: this.pos.y + 2 },
-        { ...this.pos, y: this.pos.y + 3 },
-      ],
-    ];
+    this.shapeOptions = this.shapeOptions.map(options => options.map(option => ({ x: option.x, y: option.y + 1 })));
   }
 }
